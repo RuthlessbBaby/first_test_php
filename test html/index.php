@@ -1,0 +1,73 @@
+<?php
+
+$host="localhost";
+$user="root";
+$password="";
+$db="test";
+
+mysql_connect($host,$user,$password);
+mysql_select_db($db);
+
+if(isset($_POST['username'])){
+	
+	$notuser=$_POST['username'];						
+	$notpassword=$_POST['password'];
+	
+	$sql="select * from suryatest where user='".$notuser."'AND Password='".$notpassword"' limit 1";
+	
+	$result=mysql_query($sql);
+	
+	if(mysql_num_rows($result)==1){
+		<a href="menu.html"> </a>
+		exit();
+	}
+	else{
+		echo"username doestnot match with password";
+		exit();
+	}
+}
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> LOGIN </title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://kit.fontawesome.com/7d9463b8e9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="apple">
+		<div class="loginform">
+			<div class="title">
+				LOGIN FORM
+			</div>
+			<form method="$POST" action="#">
+			<div class="input-form username">
+			<input type="text" class="input-username" placeholder="Username">
+			<i class="fas fa-user"></i>
+			</div>
+			<div class="input-form password">
+			<input type="password" class="input-password" placeholder="Password">
+			<i class="fas fa-key"></i>
+			</div>
+			<div class="button">
+				<a href="menu.html"> Login</a>
+			</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
